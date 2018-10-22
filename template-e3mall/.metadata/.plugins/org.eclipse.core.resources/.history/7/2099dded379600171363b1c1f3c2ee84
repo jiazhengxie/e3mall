@@ -1,0 +1,60 @@
+package com.jzhx.service.Impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.jzhx.common.pojo.EasyUIDataGridResult;
+import com.jzhx.common.utils.E3Result;
+import com.jzhx.common.utils.IDUtils;
+import com.jzhx.mapper.TbItemMapper;
+import com.jzhx.pojo.TbItem;
+import com.jzhx.pojo.TbItemExample;
+import com.jzhx.service.ItemService;
+
+@Service
+public class ItemServiceImpl implements ItemService{
+    @Autowired
+    private TbItemMapper itemMapper;
+	@Override
+	public TbItem getItemById(long id) {
+		// TODO Auto-generated method stub
+		
+		return itemMapper.selectByPrimaryKey(id);
+
+}
+	@Override
+	public EasyUIDataGridResult getItemList(int page, int rows) {
+		// TODO Auto-generated method stub
+		//设置分页信息
+		PageHelper.startPage(page, rows);
+		TbItemExample example = new TbItemExample();
+		List<TbItem> list = itemMapper.selectByExample(example);
+		EasyUIDataGridResult result = new EasyUIDataGridResult();
+		result.setRows(list);;
+		//取分页结果
+		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+		long total = pageInfo.getTotal();
+		result.setTotal(total);
+		return result;
+	}
+	@Override
+	public E3Result addItem(TbItem item, String desc) {
+		// TODO Auto-generated method stub
+		//先生成商品ID
+		 long itemId = IDUtils.genItemId();
+		//补全页面属性
+		 item.setId(itemId);
+		 //1-正常  2-下架  3-删除
+		 item.setStatus((byte)1);
+		//向商品表插入数据
+		//创建商品描述表对应的pojo对象
+		//补全属性
+		//向商品不描述表插入数据
+		//返回成功
+		return null;
+	}
+}

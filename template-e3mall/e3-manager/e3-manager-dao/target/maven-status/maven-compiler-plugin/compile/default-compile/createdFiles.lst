@@ -1,0 +1,11 @@
+com\jzhx\mapper\TbItemParamMapper.class
+com\jzhx\mapper\TbOrderItemMapper.class
+com\jzhx\mapper\TbContentMapper.class
+com\jzhx\mapper\TbContentCategoryMapper.class
+com\jzhx\mapper\TbItemParamItemMapper.class
+com\jzhx\mapper\TbOrderMapper.class
+com\jzhx\mapper\TbItemCatMapper.class
+com\jzhx\mapper\TbUserMapper.class
+com\jzhx\mapper\TbItemDescMapper.class
+com\jzhx\mapper\TbItemMapper.class
+com\jzhx\mapper\TbOrderShippingMapper.class
